@@ -16,12 +16,109 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         jump += 1
         Runner.vy = gravity / 2 * -1
     }
+    animation.runImageAnimation(
+    Runner,
+    [img`
+        . . . . . . f f f f . . . . . . 
+        . . . . f f f 2 2 f f f . . . . 
+        . . . f f f 2 2 2 2 f f f . . . 
+        . . f f f e e e e e e f f f . . 
+        . . f f e 2 2 2 2 2 2 e e f . . 
+        . . f e 2 f f f f f f 2 e f . . 
+        . . f f f f e e e e f f f f . . 
+        . f f e f b f 4 4 f b f e f f . 
+        . f e e 4 1 f d d f 1 4 e e f . 
+        . . f f f f d d d d d e e f . . 
+        . f d d d d f 4 4 4 e e f . . . 
+        . f b b b b f 2 2 2 2 f 4 e . . 
+        . f b b b b f 2 2 2 2 f d 4 . . 
+        . . f c c f 4 5 5 4 4 f 4 4 . . 
+        . . . f f f f f f f f . . . . . 
+        . . . . . f f . . f f . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . f f f 2 2 f f f . . . . 
+        . . . f f f 2 2 2 2 f f f . . . 
+        . . f f f e e e e e e f f f . . 
+        . . f f e 2 2 2 2 2 2 e e f . . 
+        . f f e 2 f f f f f f 2 e f f . 
+        . f f f f f e e e e f f f f f . 
+        . . f e f b f 4 4 f b f e f . . 
+        . f f e 4 1 f d d f 1 4 e f . . 
+        f d f f e 4 d d d d 4 e f e . . 
+        f b f e f 2 2 2 2 e d d 4 e . . 
+        f b f 4 f 2 2 2 2 e d d e . . . 
+        f c f . f 4 4 5 5 f e e . . . . 
+        . f f . f f f f f f f . . . . . 
+        . . . . f f f . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . f f f 2 2 f f f . . . . 
+        . . . f f f 2 2 2 2 f f f . . . 
+        . . f f f e e e e e e f f f . . 
+        . . f e e 2 2 2 2 2 2 e f f . . 
+        . f f e 2 f f f f f f 2 e f f . 
+        . f f f f f e e e e f f f f f . 
+        . . f e f b f 4 4 f b f e f . . 
+        . . f e 4 1 f d d f 1 4 e f . . 
+        . . e f f f f d d d 4 e f . . . 
+        . . f d d d d f 2 2 2 f e f . . 
+        . . f b b b b f 2 2 2 f 4 e . . 
+        . . f b b b b f 5 4 4 f . . . . 
+        . . . f c c f f f f f f . . . . 
+        . . . . f f . . . f f f . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . f f f 2 2 f f f . . . . 
+        . . . f f f 2 2 2 2 f f f . . . 
+        . . f f f e e e e e e f f f . . 
+        . . f e e 2 2 2 2 2 2 e f f . . 
+        . f f e 2 f f f f f f 2 e f f . 
+        . f f f f f e e e e f f f f f . 
+        . . f e f b f 4 4 f b f e f . . 
+        . . f e 4 1 f d d f 1 4 e f f . 
+        . . e f e 4 d d d d 4 e f f d f 
+        . . e 4 d d e 2 2 2 2 f e f b f 
+        . . . e d d e 2 2 2 2 f 4 f b f 
+        . . . . e e f 5 5 4 4 f . f c f 
+        . . . . . f f f f f f f . f f . 
+        . . . . . . . . . f f f . . . . 
+        `],
+    500,
+    false
+    )
 })
-let Runner: Sprite = null
+function TilemapPicker (Tilemaps: any[]) {
+    if (true) {
+    	
+    }
+}
 let jump = 0
+let Runner: Sprite = null
 let gravity = 0
+tiles.setCurrentTilemap(tilemap`level26`)
 gravity = 300
-jump = 0
+let LeftPlayAreaBound = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . 3 . . . . . . 3 . . . . 3 
+    . . 3 3 . . 3 3 . . 3 3 . . 3 3 
+    . 3 . . . . 3 3 . . 3 3 3 3 3 3 
+    . 3 . . . 3 . . 3 . 3 . 3 3 . 3 
+    . 3 . . . 3 . . 3 . 3 . . . . 3 
+    . 3 . . . 3 . . 3 . 3 . . . . 3 
+    . 3 . . . 3 3 3 3 . 3 . . . . 3 
+    . 3 . . . 3 . . 3 . 3 . . . . 3 
+    . 3 3 3 . 3 . . 3 . 3 . . . . 3 
+    . . 3 3 . 3 . . 3 . 3 . . . . 3 
+    . . . . . . . . . . . . . . . 3 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Player)
 Runner = sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
@@ -40,8 +137,6 @@ Runner = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
-Runner.setPosition(10, 60)
-scene.centerCameraAt(60, 60)
 scroller.setLayerImage(scroller.BackgroundLayer.Layer0, img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffcfffffffffffffcfffffffffffffffffffffffffcfffffffffffffcfffffffffffffffffffffffffcfffffffffffffcfffffffffffffffffffffffffcfffffffffffffffffffffffff
@@ -286,13 +381,28 @@ scroller.setLayerImage(scroller.BackgroundLayer.Layer1, img`
     3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
     3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
     `)
-scroller.scrollBackgroundWithSpeed(-60, 0, scroller.BackgroundLayer.Layer0)
-scroller.scrollBackgroundWithSpeed(-80, 0, scroller.BackgroundLayer.Layer1)
-tiles.setCurrentTilemap(tilemap`level5`)
+scroller.scrollBackgroundWithSpeed(0, 0, scroller.BackgroundLayer.Layer0)
+scroller.scrollBackgroundWithSpeed(0, 0, scroller.BackgroundLayer.Layer1)
+jump = 0
+scene.cameraFollowSprite(Runner)
+Runner.setVelocity(50, 0)
+let Tilemaps = [
+tilemap`TileA`,
+tilemap`TileB`,
+tilemap`TileC0`,
+tilemap`TileD`,
+tilemap`TileE`,
+tilemap`TileD0`
+]
 game.onUpdate(function () {
     if (gravity > 0) {
         info.setScore(1)
     } else {
         info.setScore(0)
     }
+})
+game.onUpdate(function () {
+    console.logValue("xpos", Runner.x)
+    console.logValue("ypos", Runner.y)
+    pause(100)
 })
